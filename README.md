@@ -1,78 +1,70 @@
-# React Kanban
+# Getting Started with Create React App
 
-Otrzymałeś zlecenie, które polega na implementacji systemu Kanban.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Idealnie się składa ponieważ sam chciałeś poznać tą metodykę działania! Słyszałeś, że często jest ona wykorzystywana w działach IT i nie chciałbyś być "zielonym" jeśli trafisz do zespołu, w którym jest wykorzystywana.
+## Available Scripts
 
-Klient chce rozwiązanie zbliżone do tego: https://kanbanblog.com/explained/
+In the project directory, you can run:
 
-Pamiętaj, że zanim zajmiesz się planowaniem i wdrażaniem powinieneś zgłębić wiedzę na dany temat. Proponuję, abyś zapoznał się z [4 filmami od Atlassian](https://www.youtube.com/watch?v=iVaFVa7HYj4&list=PLaD4FvsFdarR3oF1gp5_NmnlL-BQIE9sW&index=1), które pozwolą lepiej zrozumieć Ci koncepcję Kanban. Warto też zapoznać się z [artykułem w języku polskim](https://productvision.pl/2015/gdzie-scrum-nie-moze-tam-kanban-posle/), aby ograniczyć błędy związane z barierą językową.
+### `npm start`
 
-Należy również poznać [konkurencję](https://kanbantool.com/pl/), na której będziesz mógł się wzorować.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-## Założenia
+### `npm test`
 
-Na początku zawsze warto określić [MVP](http://www.biznesowerewolucje.com/mvp-minimum-viable-product-praktycznie/). W naszym przypadku może to być:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- tablica z określonymi z góry kolumnami i limitem zadań
-- zadania o cechach:
-    - nazwa
-    - aktualna kolumna
-    - użytkownik (osoba odpowiedzialna)
-- możliwość przemieszczania zadań
+### `npm run build`
 
-### Przechowywanie danych
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Na tym etapie chcemy wykorzystać najszybszą do implementacji możliwość zapisywania ustawień naszej tablic. Dlatego wybór padł na [localStorage](http://kursjs.pl/kurs/storage/storage.php). W ten sposób będzie można testować rozwiązanie nie musząc przejmować się zaawansowanymi rozwiązaniami.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Na pewno ułatwiłby Ci pracę hook, który udostępniałby metody umożliwiające zapis i odczyt danych z localStorage np.:
-```
-const [getItem, setItem] = useStorage('name');
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Dodatkowo przy pierwszym uruchomieniu należałoby pobrać dane z localStorage oraz przekazać dane do wnętrza aplikacji za pomocą Context API. Jeśli takich danych nie ma to trzeba ustawić wartości początkowe.
+### `npm run eject`
 
-Trzeba się też zastanowić nad strukturą zapisywanych danych. 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Musimy przechowywać informacje o maksymalnej ilości zadań w kolumnach, ich nazwach i pewnie przydałby się jakiś identyfikator np.:
-```
-[
-    {id: 1, name: 'Pending', limit: 4},
-    {id: 2, name: 'Analysis - Doing', limit: 3},
-    {id: 3, name: 'Analysis - Done', limit: 2},
-    // ...
-]
-``` 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Podobna struktura mogłbaby wyglądać przy zadaniach:
-```
-[
-    {id: 1, name: 'Task1', idColumn: 1, user: 'Anna'},
-    {id: 2, name: 'Task2', idColumn: 1, user: 'Anna'},
-    {id: 3, name: 'Task3', idColumn: 1, user: 'Anna'},
-    // ...
-]
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Ponieważ staramy się maksymalnie wszystko uprosić na początku to uznajemy, że `id` w kolumnach są zawsze kolejnymi numerami i przemieszczenie się zadań między nimi odbywa się przy pomocy dodania lub odjęcia jeden od aktualnej wartości dla `idColumn`.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### Komponenty
+## Learn More
 
-Już na tym etapie powinieneś być świadomy jakich komponentów będziesz potrzebować.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-Nasza tablica może być komponentem o nazwie `<Board />`. Tablica składa się z kolumn więc będziemy potrzebować komponentu `<Column />`. W każdej kolumnie będą wyświetlane zadania więc `<Task />` też się przyda. Musimy mieć możliwość tworzenia zadań dlatego bez komponentu `<Form />` też się nie obędziemy.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Od czego zaczać?
+### Code Splitting
 
-Najpierw utwórz strukturę danych wew. Twojej aplikacji i postaraj się wyświetlić wszystkie elementy wkorzystując odpowiednie komponenty. Dane możesz przechowywać w `state` w komponencie `<App />`, które przekazujesz przez Context API. Pamiętaj, że w ten sposób możesz też przekazywać metody, które będą aktualizować dane w `state`.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Następnie zapisz dane w localStorage i sprawdź czy nadal wszystko działa.
+### Analyzing the Bundle Size
 
-Potem dopiero postaraj sie przemieszczać zadania między kolumnami bez zapisywania danych w localStorage. Jak już wspomieliśmy wystarczy ikrementować lub dekrementować pole `idColumn`. Pamiętaj, aby sprawdzić czy limit zadań w kolumnie nie jest osiągnięty i czy kolumna "następna" oraz "poprzednia" istnieje.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Jak już ten element będzie działał to daj możliwość tworzenia dodatkowych zadań przy pomocy formularza.
+### Making a Progressive Web App
 
-Dopiero teraz wprowadź aktualizację danych w localStorage. Zwróć uwagę, że każda zmiana `state` aplikacji powinna być zapisywana w localStorage.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Do wykonania zadania możesz użyć konfiguracji wykorzystującej ESLint-a i Prettier-a -> https://github.com/devmentor-pl/react-helloworld-modern
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
