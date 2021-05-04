@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Wrapper } from './Form.style';
-import ContextForm from '../context/contextForm';
 
 const Form = () => {
-  const ctx = useContext(ContextForm);
   return (
     <Wrapper>
-      <form onSubmit={ctx.submitted}>
+      <form>
         <label htmlFor="task">
           Type task:
           <input type="text" name="taskName" required />

@@ -1,18 +1,20 @@
 import React, { useContext } from 'react';
-import Form from './Form';
+import Column from './Column';
 import { Heading, Main, Wrapper } from './Board.styles';
-import ContextColumn from '../context/contextColumn';
+import { ContextColumn } from '../context/context';
 
 const Board = () => {
-  const ctx = useContext(ContextColumn);
+  const columnsArray = useContext(ContextColumn);
+  const columns = columnsArray.map((column) => {
+    return <Column name={column.name} key={column.id} limit={column.limit} />;
+  });
   return (
     <>
       <Wrapper>
         <Heading>
           <h1>Your Kanban Board</h1>
         </Heading>
-        <Main>{ctx.data()}</Main>
-        <Form />
+        <Main>{columns}</Main>
       </Wrapper>
     </>
   );

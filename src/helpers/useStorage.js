@@ -1,5 +1,5 @@
 const useStorage = () => {
-  const setItem = (data = [], name = '') => {
+  const setItem = (data, name = '') => {
     window.localStorage.setItem(name, JSON.stringify(data));
   };
 

@@ -8,33 +8,4 @@ export const columnList = [
   { id: 7, name: 'Deploy', limit: null },
 ];
 
-export const taskItems = [
-  {
-    id: 1,
-    name: 'Task 1',
-    idColumn: 1,
-    userName: 'Mateusz',
-    toDo: 'Nauka Reacta',
-  },
-  {
-    id: 2,
-    name: 'Task 15',
-    idColumn: 3,
-    userName: 'Mateusz',
-    toDo: 'Nauka Reacta',
-  },
-  {
-    id: 3,
-    name: 'Task 11',
-    idColumn: 1,
-    userName: 'Mateusz',
-    toDo: 'Nauka GIT',
-  },
-  {
-    id: 4,
-    name: 'Task 12',
-    idColumn: 2,
-    userName: 'Mateusz',
-    toDo: 'Nauka GIT',
-  },
-];
+export const taskItems = [];
