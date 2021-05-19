@@ -1,26 +1,35 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { ContextTask } from '../context/context';
 import Task from './Task';
 
 import { Wrapper } from './Column.styles';
 
-const Column = ({ name, id, limit }) => {
-	const tasks = useContext(ContextTask);
+const Column = ({ name, id, columndId }) => {
+  const tasks = useContext(ContextTask);
 
-	const addingTask = tasks.map((task) => {
-		return (
-			<Task id={task.id} name={task.taskName} userName={task.user} toDo={task.toDo} />
-		);
-	})
+  const filteredTask = tasks.filter(task => task.idColumn === columndId);
+
+  const addedTask = filteredTask.map((task) => {
+    return (
+      <Task
+        key={task.id}
+        id={task.id}
+        name={task.taskName}
+        userName={task.user}
+        toDo={task.toDo}
+        idColumn={task.idColumn}
+      />
+    );
+  });
 
   return (
     <Wrapper key={id}>
       <header>
         <h2>{name}</h2>
       </header>
-	    <div>
-		    {addingTask}
-	    </div>
+      <div>
+        <div>{addedTask}</div>
+      </div>
     </Wrapper>
   );
 };

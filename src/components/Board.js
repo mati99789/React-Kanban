@@ -6,7 +6,14 @@ import { ContextColumn } from '../context/context';
 const Board = () => {
   const columnsArray = useContext(ContextColumn);
   const columns = columnsArray.map((column) => {
-    return <Column name={column.name} key={column.id} limit={column.limit} />;
+    return (
+      <Column
+        name={column.name}
+        key={column.id}
+        limit={column.limit}
+        columndId={column.id}
+      />
+    );
   });
   return (
     <>

@@ -15,6 +15,5 @@ export const Main = styled.div`
   display: flex;
   justify-content: center;
   background-color: #aaa;
-  height: 60vh;
   flex-wrap: wrap;
 `;
