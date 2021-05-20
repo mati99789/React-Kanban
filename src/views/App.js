@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { v4 as uuid } from 'uuid';
-import './App.css';
 import useStorage from './../helpers/useStorage';
+import { v4 as uuid } from 'uuid';
 import { columnList } from './../kanbanData';
 import { ContextColumn, ContextTask, MoveTask } from '../context/context';
 
+import './App.css';
 import Board from '../components/Board';
 import Form from '../components/Form';
 
@@ -29,18 +29,48 @@ function App() {
     };
 
     setTask([...tasks, taskToAdd]);
+
   };
 
-  const handleForwardButton = (task) => {
-    console.log(task);
+  const checkColumnLimit = (idColumn) => {
+    const columns = getItem('columns');
+    for (let i = 0; i < columns.length; i++) {
+      if (columns[i].id === idColumn) {
+        if (columns[i].id <= columns.length && columns[i].id > 0) {
+          return true;
+        }
+      }
+    }
   };
 
-  const handleBackwardButton = (task) => {
-    console.log(task);
+  const handleForwardButton = (idColumn, id) => {
+    const copyTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, idColumn: task.idColumn + 1 };
+      }
+      return task;
+    });
+
+    setTask(copyTasks);
+  };
+
+  const handleBackwardButton = (idColumn, id) => {
+    const copyTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, idColumn: task.idColumn - 1 };
+      }
+      return task;
+    });
+
+    setTask(copyTasks);
   };
 
   const moveTask = (e, id, idColumn) => {
-    console.log(id);
+    if (e.target.name === 'forward' && checkColumnLimit(idColumn + 1)) {
+      handleForwardButton(idColumn, id);
+    } else if (e.target.name === 'backward' && checkColumnLimit(idColumn - 1)) {
+      handleBackwardButton(idColumn, id);
+    }
   };
 
   return (

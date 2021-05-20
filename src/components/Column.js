@@ -7,7 +7,7 @@ import { Wrapper } from './Column.styles';
 const Column = ({ name, id, columndId }) => {
   const tasks = useContext(ContextTask);
 
-  const filteredTask = tasks.filter(task => task.idColumn === columndId);
+  const filteredTask = tasks.filter((task) => task.idColumn === columndId);
 
   const addedTask = filteredTask.map((task) => {
     return (

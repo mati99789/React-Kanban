@@ -3,7 +3,7 @@ import { Wrapper } from './Task.styles';
 import { MoveTask } from './../context/context';
 
 const Task = (props) => {
-	const {name, toDo, userName, id, idColumn} = props;
+  const { name, toDo, userName, id, idColumn } = props;
 
   const moveTask = useContext(MoveTask);
 
@@ -12,10 +12,18 @@ const Task = (props) => {
       <h3>{name}</h3>
       <p>{toDo}</p>
       <p>{userName}</p>
-      <button type="button" onClick={(e) => moveTask(e, id, idColumn)}>
+      <button
+        type="button"
+        name="backward"
+        onClick={(e) => moveTask(e, id, idColumn)}
+      >
         Backward
       </button>
-      <button type="button" onClick={(e) => moveTask(e, id, idColumn)}>
+      <button
+        type="button"
+        name="forward"
+        onClick={(e) => moveTask(e, id, idColumn)}
+      >
         Forward
       </button>
     </Wrapper>

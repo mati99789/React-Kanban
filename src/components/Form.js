@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { Wrapper } from './Form.style';
 
 const Form = (props) => {
