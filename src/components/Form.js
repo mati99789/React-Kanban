@@ -50,7 +50,7 @@ const Form = (props) => {
             required
           />
         </label>
-        <input type="submit" value="submit" />
+        <input type="submit" value="Add task" />
       </form>
     </Wrapper>
   );

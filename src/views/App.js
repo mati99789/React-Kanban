@@ -74,7 +74,7 @@ function App() {
   };
 
   return (
-    <ContextColumn.Provider value={getItem('columns')}>
+    <ContextColumn.Provider value={getItem('columns') || []}>
       <ContextTask.Provider value={tasks}>
         <MoveTask.Provider value={moveTask}>
           <Board />

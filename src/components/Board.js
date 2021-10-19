@@ -21,7 +21,7 @@ const Board = () => {
         <Heading>
           <h1>Your Kanban Board</h1>
         </Heading>
-        <Main>{columns}</Main>
+        <Main>{columns }</Main>
       </Wrapper>
     </>
   );
