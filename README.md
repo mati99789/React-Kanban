@@ -10,7 +10,7 @@ This is a basic react kanban to practice react.
 
 ## 💡 Technologies
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![JavaScript](https://img.shields.io/badge/react-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![React](https://img.shields.io/badge/react-%23323330.svg?style=for-the-badge&logo=react&logoColor=%23F7DF1E)
 ![Styled-Components](https://img.shields.io/badge/styledComponents-%23323330.svg?style=for-the-badge&logo=styledComponents&logoColor=%23F7DF1E)
 
